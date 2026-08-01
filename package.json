@@ -1,0 +1,66 @@
+{
+	"name": "maxread-api",
+	"version": "0.1.0",
+	"private": true,
+	"description": "REST API for a novel reading platform, built with Express, TypeScript, and Mongoose.",
+	"keywords": [
+		"express",
+		"typescript",
+		"mongoose",
+		"api"
+	],
+	"license": "ISC",
+	"author": "Akash Damle <code-kasha>",
+	"type": "module",
+	"main": "dist/server.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/code-kasha/maxread-api.git"
+	},
+	"engines": {
+		"node": ">=22.0.0"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "pnpm",
+			"version": "^11.3.0",
+			"onFail": "download"
+		}
+	},
+	"packageManager": "pnpm@11.18.0",
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsx watch src/server.ts",
+		"lint": "oxlint src",
+		"seed": "tsx src/seed.ts",
+		"start": "node dist/server.js",
+		"test": "vitest run",
+		"test:watch": "vitest"
+	},
+	"dependencies": {
+		"cors": "^2.8.6",
+		"dotenv": "^17.4.2",
+		"express": "^5.2.1",
+		"mongoose": "^9.9.0",
+		"zod": "^4.4.3"
+	},
+	"devDependencies": {
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.6",
+		"@types/node": "^26.1.2",
+		"@types/supertest": "^7.2.1",
+		"chalk": "^6.0.0",
+		"mongodb-memory-server": "^11.2.0",
+		"oxlint": "^1.76.0",
+		"supertest": "^7.2.2",
+		"tsx": "^4.23.1",
+		"typescript": "^7.0.2",
+		"vitest": "^4.1.10"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"mongodb-memory-server"
+		]
+	}
+}
