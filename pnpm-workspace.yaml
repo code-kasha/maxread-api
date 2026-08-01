@@ -3,3 +3,6 @@ allowBuilds:
   mongodb-memory-server: true
   packages:
     - "."
+  onlyBuiltDependencies:
+    - esbuild
+    - mongodb-memory-server

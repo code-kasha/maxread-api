@@ -20,13 +20,6 @@
 	"engines": {
 		"node": ">=22.0.0"
 	},
-	"devEngines": {
-		"packageManager": {
-			"name": "pnpm",
-			"version": "^11.3.0",
-			"onFail": "download"
-		}
-	},
 	"packageManager": "pnpm@11.18.0",
 	"scripts": {
 		"build": "tsc",
@@ -56,11 +49,5 @@
 		"tsx": "^4.23.1",
 		"typescript": "^7.0.2",
 		"vitest": "^4.1.10"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild",
-			"mongodb-memory-server"
-		]
 	}
 }
