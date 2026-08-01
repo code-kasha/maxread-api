@@ -9,7 +9,8 @@ describe("GET /api/novels", () => {
 	it("returns an empty array when no novels exist", async () => {
 		const res = await request(app).get("/api/novels")
 		expect(res.status).toBe(200)
-		expect(res.body).toEqual([])
+		expect(res.body.data).toEqual([])
+		expect(res.body.pagination.total).toBe(0)
 	})
 
 	it("returns novels that exist", async () => {
@@ -21,8 +22,8 @@ describe("GET /api/novels", () => {
 
 		const res = await request(app).get("/api/novels")
 		expect(res.status).toBe(200)
-		expect(res.body).toHaveLength(1)
-		expect(res.body[0].slug).toBe("test-novel")
+		expect(res.body.data).toHaveLength(1)
+		expect(res.body.data[0].slug).toBe("test-novel")
 	})
 })
 
