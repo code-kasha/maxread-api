@@ -6,3 +6,4 @@ allowBuilds:
   onlyBuiltDependencies:
     - esbuild
     - mongodb-memory-server
+  '@scarf/scarf': true
