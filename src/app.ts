@@ -6,6 +6,7 @@ import novelRoutes from "./routes/novels.js"
 import chapterRoutes from "./routes/chapters.js"
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler.js"
 import { generateOpenApiDocument } from "./docs/registry.js"
+import { apiLimiter } from "./middleware/rateLimiter.js"
 
 const require = createRequire(import.meta.url)
 const redoc = require("redoc-express") as (options: {
@@ -30,7 +31,7 @@ app.get(
 		specUrl: "/api/openapi.json",
 	}),
 )
-
+app.use("/api", apiLimiter)
 app.use("/api/novels", novelRoutes)
 app.use("/api/chapters", chapterRoutes)
 

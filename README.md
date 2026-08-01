@@ -16,6 +16,18 @@ A REST API for a novel reading platform, built with Express, TypeScript, and Mon
 - **Testing**: Vitest + Supertest + `mongodb-memory-server`
 - **CI**: GitHub Actions (lint, type-check, test on every push/PR)
 
+## Features
+
+- **Novels & Chapters** — REST endpoints for browsing novels and reading chapters in order
+- **Search & Filtering** — search novels by title/author, filter by genre or tag
+- **Pagination** — paginated novel listings with configurable page size
+- **Validation** — all inputs validated with Zod; malformed requests return structured 400 errors
+- **Rate Limiting** — protects the API from abuse (100 requests / 15 min per IP)
+- **Centralized Error Handling** — consistent JSON error shape across all endpoints
+- **API Documentation** — interactive Swagger UI (`/docs`) and ReDoc (`/redoc`), generated from the same Zod schemas used for validation
+- **Testing** — integration test suite (Vitest + Supertest + in-memory MongoDB) covering all endpoints, edge cases, and error paths
+- **CI** — GitHub Actions pipeline runs lint, type-check, and tests on every push/PR
+
 ## Project Structure
 
 ```
@@ -142,11 +154,3 @@ See [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
 ## Notes on Data
 
 Sample novel/chapter content used for local seeding and testing is original, written specifically for this project — no third-party or scraped content is included in this repository.
-
-## Roadmap
-
-- [ ] Pagination on `GET /api/novels`
-- [ ] Search/filter by genre or tag
-- [ ] Deploy API (Railway) and frontend (Vercel)
-- [ ] Rate limiting
-- [ ] API documentation (OpenAPI/Swagger)

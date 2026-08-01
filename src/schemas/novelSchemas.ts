@@ -56,3 +56,25 @@ export const errorResponseSchema = z
 		message: z.string(),
 	})
 	.openapi("Error")
+
+export const novelQuery = z.object({
+	page: z.coerce.number().int().positive().optional().default(1),
+	limit: z.coerce.number().int().positive().max(50).optional().default(10),
+	search: z.string().trim().min(1).optional(),
+	genre: z.string().trim().min(1).optional(),
+	tag: z.string().trim().min(1).optional(),
+})
+
+export const paginatedNovelsSchema = z
+	.object({
+		data: novelResponseSchema.array(),
+		pagination: z.object({
+			page: z.number().openapi({ example: 1 }),
+			limit: z.number().openapi({ example: 10 }),
+			total: z.number().openapi({ example: 42 }),
+			totalPages: z.number().openapi({ example: 5 }),
+		}),
+	})
+	.openapi("PaginatedNovels")
+
+export type NovelQuery = z.infer<typeof novelQuery>

@@ -12,7 +12,14 @@ export function validate(schema: ZodType, target: ValidateTarget = "body") {
 				errors: result.error.flatten().fieldErrors,
 			})
 		}
-		req[target] = result.data
+
+		if (target === "query") {
+			// Express 5: req.query is a read-only getter, so we can't reassign it.
+			// Store the validated/coerced query on res.locals instead.
+			res.locals.query = result.data
+		} else {
+			req[target] = result.data
+		}
 		next()
 	}
 }

@@ -8,9 +8,27 @@ import {
 	novelResponseSchema,
 	chapterResponseSchema,
 	errorResponseSchema,
+	paginatedNovelsSchema,
 } from "../schemas/novelSchemas.js"
+import { novelQuery } from "../schemas/novelSchemas.js"
 
 const registry = new OpenAPIRegistry()
+
+registry.registerPath({
+	method: "get",
+	path: "/api/novels",
+	summary: "List novels",
+	description:
+		"Returns a paginated list of novels. Supports search by title/author, and filtering by genre or tag name.",
+	tags: ["Novels"],
+	request: { query: novelQuery },
+	responses: {
+		200: {
+			description: "A paginated list of novels",
+			content: { "application/json": { schema: paginatedNovelsSchema } },
+		},
+	},
+})
 
 registry.registerPath({
 	method: "get",
